@@ -1,0 +1,40 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+#app-container {
+	min-width: 950px;
+	width: 80%;
+	height: calc(100vh - 40px);
+	margin: 20px auto;
+	display: flex;
+}
+
+#sidebar {
+	width: 35%;
+	height: 100%;
+	background-color: red;
+}
+
+#main-bottom-container {
+	width: 65%;
+	height: 100%;
+}
+
+#main {
+	background-color: yellow;
+	height: calc(100% - 100px);
+}
+
+#box-bottom {
+	background-color: blue;
+	height: 100px;
+}
+
+#sidebar,
+#main,
+#box-bottom {
+	border: 2px solid black;
+}
