@@ -1,21 +1,130 @@
+/* UTILITY CLASSES */
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
+.flex {
+	display: flex;
+}
+
+.text-bold {
+	font-weight: bold;
+}
+
+.text-grey-1 {
+	color: #B1B1B3;
+}
+
+.text-grey-2 {
+	color: #848C93;
+}
+
+.bg-color-1 {
+	background-color: #EAEAEA;
+}
+
+.pad-rig-15 {
+	padding-right: 15px;
+}
+
+.font-09em {
+	font-size: .9em;
+}
+
+.font-20 {
+	font-size: 20px;
+}
+/* end UTILITY CLASSES */
+
+#page-container {
+	font-family: 'Lato', sans-serif;
+	background: linear-gradient(0deg, rgba(218,219,213,1) 85%, rgba(0,151,136,1) 85%);
+	}
+
 #app-container {
 	min-width: 950px;
 	width: 80%;
-	height: calc(100vh - 40px);
-	margin: 20px auto;
-	display: flex;
+	height: 100vh;
+	margin: 0 auto;
+	padding: 15px 0px 15px;
 }
 
 #sidebar {
 	width: 35%;
 	height: 100%;
 	background-color: red;
+	border-right: 1px solid black;
+}
+
+#sidebar .side-top {
+	justify-content: space-between;
+	padding: 10px 20px 10px 10px;
+	align-items: center;
+}
+
+#sidebar .side-top > .user-account {
+	align-items: center;
+}
+
+#sidebar .side-top > .user-account .profile-pic {
+	width: 40px;
+	height: 50px;
+	margin-right: 10px;
+}
+
+#sidebar .side-top > .user-account .profile-pic img {
+	height: 100%;
+	border-radius: 50%;
+}
+
+#sidebar > .notifications {
+	background-color: #8EDAFA;
+	padding: 20px;
+	align-items: center;
+}
+
+#sidebar > .notifications .notifications-icon {
+	color: #8EDAFA;
+	background-color: white;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	border-radius: 50%;
+	text-align: center;
+	margin-right: 10px;
+}
+
+#sidebar > .notifications .desktop-notifications {
+	 font-size: .8em;
+	 color: #5B879B;
+}
+
+#sidebar > .chat-start {
+	background-color: #FAFAFA;
+	padding: 10px;
+}
+
+#sidebar > .chat-start .chat-search {
+	background-color: white;
+	width: 15%;
+	height: 30px;
+	align-items: center;
+	justify-content: center;
+	font-size: 15px;
+}
+
+#sidebar > .chat-start .chat-init {
+	border: none;
+	height: 30px;
+	width: 85%;
+}
+
+#sidebar > .chat-start .chat-init::placeholder {
+	padding-left: 10px;
+	color: #848C93;
+	font-size: .9em;
 }
 
 #main-bottom-container {
@@ -31,10 +140,4 @@
 #box-bottom {
 	background-color: blue;
 	height: 100px;
-}
-
-#sidebar,
-#main,
-#box-bottom {
-	border: 2px solid black;
 }

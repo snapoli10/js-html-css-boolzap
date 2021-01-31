@@ -2,23 +2,58 @@
 <html lang="en" dir="ltr">
 	<head>
 		<meta charset="utf-8">
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 		<link rel="stylesheet" href="css/style.css">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.1/css/all.css">
 		<title>Boolzap</title>
 	</head>
 	<body>
-		<div id="app-container">
+		<div id="page-container">
+			<div id="app-container" class="flex">
 
-			<div id="sidebar">
+				<div id="sidebar">
+					<div class="side-top bg-color-1 flex">
+						<div class="user-account flex">
+							<div class="profile-pic">
+								<img src="img/avatar_io.jpg" alt="il tuo profilo" />
+							</div>
+							<span class="username text-bold font-09em">Nome Utente</span>
+						</div>
+						<div class="user-settings font-20 text-grey-1">
+							<i class="fas fa-circle-notch pad-rig-15"></i>
+							<i class="fas fa-comment-alt pad-rig-15"></i>
+							<i class="fas fa-ellipsis-v"></i>
+						</div>
+					</div>
 
-			</div>
+					<div class="notifications flex">
+						<div class="notifications-icon font-20">
+							<i class="fas fa-bell-slash"></i>
+						</div>
+						<div class="enable-notifications">
+							<h2 class="font-09em">Ricevi notifiche di nuovi messaggi</h2>
+							<a href="#" class="desktop-notifications">Attiva notifiche desktop</a>
+						</div>
+					</div>
 
-			<div id="main-bottom-container">
-				<div id="main">
-
+					<div class="chat-start flex">
+						<div class="chat-search flex">
+							<i class="fas fa-search text-grey-1"></i>
+						</div>
+						<input type="text" class="chat-init" name="chat-start" placeholder="Cerca o inizia una nuova chat">
+					</div>
 				</div>
 
-				<div id="box-bottom">
+				<div id="main-bottom-container">
+					<div id="main">
 
+					</div>
+
+					<div id="box-bottom">
+
+					</div>
 				</div>
 			</div>
 		</div>
