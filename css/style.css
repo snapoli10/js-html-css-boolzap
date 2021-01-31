@@ -9,10 +9,6 @@
 	display: flex;
 }
 
-.text-bold {
-	font-weight: bold;
-}
-
 .text-grey-1 {
 	color: #B1B1B3;
 }
@@ -33,12 +29,26 @@
 	padding-right: 15px;
 }
 
+.font-08em {
+	font-size: .8em;
+}
+
 .font-09em {
 	font-size: .9em;
 }
 
 .font-20 {
 	font-size: 20px;
+}
+
+.profile-pic {
+	width: 40px;
+	height: 50px;
+}
+
+.profile-pic img {
+	height: 100%;
+	border-radius: 50%;
 }
 /* end UTILITY CLASSES */
 
@@ -65,6 +75,7 @@
 	justify-content: space-between;
 	padding: 10px 20px 10px 10px;
 	align-items: center;
+	height: 65px;
 }
 
 #sidebar .side-top > .user-account {
@@ -72,20 +83,14 @@
 }
 
 #sidebar .side-top > .user-account .profile-pic {
-	width: 40px;
-	height: 50px;
 	margin-right: 10px;
-}
-
-#sidebar .side-top > .user-account .profile-pic img {
-	height: 100%;
-	border-radius: 50%;
 }
 
 #sidebar > .notifications {
 	background-color: #8EDAFA;
 	padding: 20px;
 	align-items: center;
+	height: 80px;
 }
 
 #sidebar > .notifications .notifications-icon {
@@ -99,13 +104,13 @@
 }
 
 #sidebar > .notifications .desktop-notifications {
-	 font-size: .8em;
-	 color: #5B879B;
+	color: #5B879B;
 }
 
 #sidebar > .chat-start {
 	background-color: #FAFAFA;
 	padding: 10px;
+	height: 50px;
 }
 
 #sidebar > .chat-start .chat-search {
@@ -129,6 +134,7 @@
 }
 
 #sidebar > .chats {
+	height: calc(100% - 65px - 80px - 50px);
 	overflow-y: scroll;
 }
 
@@ -157,11 +163,51 @@
 }
 
 #main {
-	background-color: yellow;
 	height: calc(100% - 60px);
 }
 
+#main > .main-top {
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 20px 10px 10px;
+	height: 65px;
+}
+
+#main > .main-top .user-account {
+	align-items: center;
+}
+
+#main > .main-top .user-account .last-seen {
+	color: #848C93;
+}
+
+#main > .main-top .user-account .profile-pic {
+	margin-right: 25px;
+}
+
+#main > .messaging {
+	background-image: url('../img/mine.jpg');
+	height: calc(100% - 65px);
+	overflow-y: scroll;
+}
+
 #box-bottom {
-	background-color: blue;
+	background-color: #F3EEEA;
 	height: 60px;
+	padding: 5px 15px;
+	justify-content: space-around;
+	align-items: center;
+	color: #717272;
+	font-size: 22px;
+}
+
+#box-bottom > .type-msg {
+	border: 2px solid black;
+	height: 100%;
+	border-radius: 5px;
+	width: 82%;
+}
+
+#box-bottom > .type-msg::placeholder {
+	padding-left: 15px;
 }
