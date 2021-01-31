@@ -21,6 +21,10 @@
 	color: #848C93;
 }
 
+.bg-white {
+	background-color: white;
+}
+
 .bg-color-1 {
 	background-color: #EAEAEA;
 }
@@ -54,7 +58,6 @@
 #sidebar {
 	width: 35%;
 	height: 100%;
-	background-color: red;
 	border-right: 1px solid black;
 }
 
@@ -87,7 +90,6 @@
 
 #sidebar > .notifications .notifications-icon {
 	color: #8EDAFA;
-	background-color: white;
 	width: 50px;
 	height: 50px;
 	line-height: 50px;
@@ -107,7 +109,6 @@
 }
 
 #sidebar > .chat-start .chat-search {
-	background-color: white;
 	width: 15%;
 	height: 30px;
 	align-items: center;
@@ -127,6 +128,29 @@
 	font-size: .9em;
 }
 
+#sidebar > .chats {
+	overflow-y: scroll;
+}
+
+#sidebar > .chats .contact-chat {
+	padding: 5px 20px;
+}
+
+#sidebar > .chats .contact-chat:not(:last-child) {
+	border-bottom: 2px solid #FAFAFA;
+}
+
+#sidebar > .chats .contact-chat .contact-pic {
+	width: 50px;
+	height: 55px;
+	margin-right: 20px;
+}
+
+#sidebar > .chats .contact-chat .contact-pic img {
+	height: 100%;
+	border-radius: 50%;
+}
+
 #main-bottom-container {
 	width: 65%;
 	height: 100%;
@@ -134,10 +158,10 @@
 
 #main {
 	background-color: yellow;
-	height: calc(100% - 100px);
+	height: calc(100% - 60px);
 }
 
 #box-bottom {
 	background-color: blue;
-	height: 100px;
+	height: 60px;
 }

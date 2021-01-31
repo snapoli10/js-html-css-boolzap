@@ -13,7 +13,7 @@
 		<div id="page-container">
 			<div id="app-container" class="flex">
 
-				<div id="sidebar">
+				<div id="sidebar" class="bg-white">
 					<div class="side-top bg-color-1 flex">
 						<div class="user-account flex">
 							<div class="profile-pic">
@@ -29,7 +29,7 @@
 					</div>
 
 					<div class="notifications flex">
-						<div class="notifications-icon font-20">
+						<div class="notifications-icon font-20 bg-white">
 							<i class="fas fa-bell-slash"></i>
 						</div>
 						<div class="enable-notifications">
@@ -39,10 +39,19 @@
 					</div>
 
 					<div class="chat-start flex">
-						<div class="chat-search flex">
+						<div class="chat-search flex bg-white">
 							<i class="fas fa-search text-grey-1"></i>
 						</div>
 						<input type="text" class="chat-init" name="chat-start" placeholder="Cerca o inizia una nuova chat">
+					</div>
+
+					<div class="chats bg-white">
+						<div class="contact-chat flex" v-for="contact in contacts">
+							<div class="contact-pic bg-color-1">
+								<img :src="`img/avatar${contact.avatar}.jpg`" alt="immagine del profilo del tuo contatto">
+							</div>
+							<h2 class="font-09em">{{contact.name}}</h2>
+						</div>
 					</div>
 				</div>
 
