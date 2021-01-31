@@ -92,6 +92,9 @@ new Vue ({
 	},
 
 	methods: {
-		
+		currentTime: function () {
+			let time = new Date();
+			return `${time.getHours()}:${time.getMinutes()}`;
+		}
 	}
 });

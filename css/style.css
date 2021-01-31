@@ -41,6 +41,10 @@
 	font-size: 20px;
 }
 
+.pointer {
+	cursor: pointer;
+}
+
 .profile-pic {
 	width: 40px;
 	height: 50px;
@@ -49,6 +53,14 @@
 .profile-pic img {
 	height: 100%;
 	border-radius: 50%;
+}
+
+.time {
+	color: #848C93;
+	font-size: .7em;
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
 }
 /* end UTILITY CLASSES */
 
@@ -146,6 +158,10 @@
 	border-bottom: 2px solid #FAFAFA;
 }
 
+#sidebar > .chats .contact-chat:hover {
+	background-color: #EAEAEA;
+}
+
 #sidebar > .chats .contact-chat .contact-pic {
 	width: 50px;
 	height: 55px;
@@ -189,12 +205,64 @@
 	background-image: url('../img/mine.jpg');
 	height: calc(100% - 65px);
 	overflow-y: scroll;
+	padding: 0 40px;
+	flex-direction: column;
+}
+
+#main > .messaging .my-message {
+	background-color: #D7F2C1;
+	align-self: flex-end;
+}
+
+#main > .messaging .my-message:after {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-left-color: #D7F2C1;
+	border-right: 0;
+	border-top: 0;
+	margin-top: -10px;
+	margin-right: -20px;
+}
+
+#main > .messaging .contact-message {
+	background-color: white;
+}
+
+#main > .messaging .contact-message:after {
+content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-right-color: white;
+	border-left: 0;
+	border-top: 0;
+	margin-top: -10px;
+	margin-left: -20px;
+}
+
+#main > .messaging .my-message,
+#main > .messaging .contact-message {
+	width: 200px;
+	height: 50px;
+	border-radius: 15px;
+	padding: 10px;
+	margin-top: 30px;
+	position: relative;
 }
 
 #box-bottom {
 	background-color: #F3EEEA;
 	height: 60px;
-	padding: 5px 15px;
+	padding: 8
+	px 15px;
 	justify-content: space-around;
 	align-items: center;
 	color: #717272;

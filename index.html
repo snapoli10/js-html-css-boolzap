@@ -22,9 +22,9 @@
 							<h2 class="username font-09em">Nome Utente</h2>
 						</div>
 						<div class="user-settings font-20 text-grey-1">
-							<i class="fas fa-circle-notch pad-rig-15"></i>
-							<i class="fas fa-comment-alt pad-rig-15"></i>
-							<i class="fas fa-ellipsis-v"></i>
+							<i class="fas fa-circle-notch pad-rig-15 pointer"></i>
+							<i class="fas fa-comment-alt pad-rig-15 pointer"></i>
+							<i class="fas fa-ellipsis-v pointer"></i>
 						</div>
 					</div>
 
@@ -46,7 +46,7 @@
 					</div>
 
 					<div class="chats bg-white">
-						<div class="contact-chat flex" v-for="contact in contacts">
+						<div class="contact-chat pointer flex" v-for="contact in contacts">
 							<div class="contact-pic bg-color-1">
 								<img :src="`img/avatar${contact.avatar}.jpg`" alt="immagine del profilo del tuo contatto">
 							</div>
@@ -68,21 +68,29 @@
 								</div>
 							</div>
 							<div class="font-20 text-grey-1">
-								<i class="fas fa-search pad-rig-15"></i>
-								<i class="fas fa-paperclip pad-rig-15"></i>
-								<i class="fas fa-ellipsis-v"></i>
+								<i class="fas fa-search pad-rig-15 pointer"></i>
+								<i class="fas fa-paperclip pad-rig-15 pointer"></i>
+								<i class="fas fa-ellipsis-v pointer"></i>
 							</div>
 						</div>
 
-						<div class="messaging">
+						<div class="messaging flex">
+							<div class="my-message">
+								<span>Ciao</span>
+								<span class="time">{{currentTime()}}</span>
+							</div>
 
+							<div class="contact-message">
+								<span>Ciao!</span>
+								<span class="time">{{currentTime()}}</span>
+							</div>
 						</div>
 					</div>
 
 					<div id="box-bottom" class="flex">
-						<i class="far fa-smile"></i>
+						<i class="far fa-smile pointer"></i>
 						<input type="text" class="type-msg" name="type-message" placeholder="Scrivi un messaggio">
-						<i class="fas fa-microphone"></i>
+						<i class="fas fa-microphone pointer"></i>
 					</div>
 				</div>
 			</div>
