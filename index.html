@@ -78,7 +78,12 @@
 							</div>
 						</div>
 
-						<div class="messaging flex">					
+						<div class="messaging flex">
+							<div v-for="message in contacts[currentChat].messages" :class="
+							(message.status === 'sent') ? 'my-message' : 'contact-message'">
+								<span>{{message.text}}</span>
+								<span class="time">{{message.date}}</span>
+							</div>
 						</div>
 					</div>
 
