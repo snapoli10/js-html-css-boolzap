@@ -90,22 +90,74 @@ new Vue ({
 			}
 		],
 
-		currentChat: 0
+		currentChat: 0,
+		newMsg: ''
 	},
 
 	methods: {
+		currentTime: function () {
+			let time = new Date();
+			return `${time.getHours()}:${time.getMinutes()}`;
+		},
+
 		selectChat: function (currentIndex) {
 			const mainBottomContainer = document.getElementById('mainBottomContainer');
 			const chatPlaceholder = document.getElementById('chatPlaceholder');
-			let contactChat = document.getElementsByClassName('contactChat');
+			const contactChat = document.getElementsByClassName('contactChat');
+			const messaging = document.getElementsByClassName('messaging')[0];
+
+			chatPlaceholder.style.display = 'none';
+			mainBottomContainer.style.display = 'block';
+			messaging.innerHTML = '';
 
 			contactChat[this.currentChat].classList.remove('bg-color-1');
 
 			this.currentChat = currentIndex;
 
-			chatPlaceholder.style.display = 'none';
-			mainBottomContainer.style.display = 'block';
 			contactChat[this.currentChat].classList.add('bg-color-1');
+
+			this.contacts[this.currentChat].messages.forEach((element) => {
+				let messageClass;
+
+				if (element.status === 'sent') {
+					messageClass = 'my-message';
+				} else {
+					messageClass = 'contact-message';
+				}
+
+				messaging.innerHTML += `
+				<div class="${messageClass}">
+					<span>${element.text}</span>
+					<span class="time">${element.date}</span>
+				</div>
+				`;
+			});
+		},
+
+		automatedResponse: function (displayElement, time) {
+			setTimeout(function () {
+				displayElement.innerHTML += `<div class="contact-message">
+					<span>Ok</span>
+					<span class="time">${time}</span>
+				</div>
+				`;
+			}, 1000);
+		},
+
+		newMessage: function () {
+			const messaging = document.getElementsByClassName('messaging')[0];
+
+			if (this.newMsg.trim().length !== 0) { // Se il messaggio non contiene solo spazi
+				messaging.innerHTML += `<div class="my-message">
+					<span>${this.newMsg}</span>
+					<span class="time">${this.currentTime()}</span>
+				</div>
+				`;
+
+				this.newMsg = '';
+
+				this.automatedResponse(messaging, this.currentTime());
+			}
 		}
 	}
 });

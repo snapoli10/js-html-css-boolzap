@@ -78,18 +78,13 @@
 							</div>
 						</div>
 
-						<div class="messaging flex">
-							<div v-for="message in contacts[currentChat].messages" :class="
-							(message.status === 'sent') ? 'my-message' : 'contact-message'">
-								<span>{{message.text}}</span>
-								<span class="time">{{message.date}}</span>
-							</div>
+						<div class="messaging flex">					
 						</div>
 					</div>
 
 					<div id="box-bottom" class="flex">
 						<i class="far fa-smile pointer"></i>
-						<input type="text" class="type-msg" name="type-message" placeholder="Scrivi un messaggio">
+						<input type="text" class="type-msg" name="type-message" placeholder="Scrivi un messaggio" v-model="newMsg" @keyup.enter="newMessage()">
 						<i class="fas fa-microphone pointer"></i>
 					</div>
 				</div>
