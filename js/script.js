@@ -139,6 +139,7 @@ new Vue ({
 		// Scrivere un nuovo messaggio
 		newMessage: function () {
 			const messageList = this.contacts[this.currentChat].messages;
+			let answer = '';
 
 			if (this.newMsg.trim().length !== 0) { // Se il messaggio non contiene solo spazi
 				messageList.push(
@@ -148,17 +149,32 @@ new Vue ({
 						status: 'sent'
 					}
 				);
+
+				// Preparazione risposte del bot
+				switch (this.newMsg.toLowerCase()) {
+					case 'ciao':
+					answer = 'Ciao a te!';
+					break;
+					case 'che fai?':
+					answer = 'Sto facendo una passeggiata';
+					break;
+					case 'come stai?':
+					answer = 'Bene, tu?';
+					break;
+					default:
+					answer = 'Ok';
+				}
+
 				this.newMsg = '';
 
-				// Risposta del bot
+				// Esecuzione risposta del bot
 				setTimeout(() => {
 					messageList.push(
 						{
 							date: this.currentTime(),
-							text: 'Ok',
+							text: answer,
 							status: 'received'
-						}
-					);
+						});
 				}, 1000);
 			}
 		},
