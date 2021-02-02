@@ -96,9 +96,27 @@ new Vue ({
 
 	methods: {
 		// Ricavare l'ora corrente
+		fixTimeValue: function (value) {
+			if (value < 10) {
+				value = '0' + value;
+			}
+			
+			return value;
+		},
+
 		currentTime: function () {
 			let time = new Date();
-			return `${time.getHours()}:${time.getMinutes()}`;
+			return `${this.fixTimeValue(time.getHours())}:${this.fixTimeValue(time.getMinutes())}`;
+		},
+
+		// Ultimo accesso
+		lastSeen: function () {
+			const messageList = this.contacts[this.currentChat].messages;
+			const receivedMessages = messageList.filter((element) => {
+				return element.status === 'received';
+			});
+
+			return receivedMessages[receivedMessages.length - 1].date;
 		},
 
 		// Selezionare una chat
@@ -142,6 +160,6 @@ new Vue ({
 					);
 				}, 1000);
 			}
-		}
+		},
 	}
 });

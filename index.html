@@ -68,7 +68,7 @@
 								</div>
 								<div class="">
 									<h2 class="username font-09em">{{contacts[currentChat].name}}</h2>
-									<span class="last-seen font-08em">Ultimo accesso oggi alle</span>
+									<span class="last-seen font-08em">Ultimo accesso: {{lastSeen()}}</span>
 								</div>
 							</div>
 							<div class="font-20 text-grey-1">
@@ -79,7 +79,7 @@
 						</div>
 
 						<div class="messaging flex">
-							<div v-for="message in contacts[currentChat].messages" :class="
+							<div v-for="message in contacts[currentChat].messages" class="flex" :class="
 							(message.status === 'sent') ? 'my-message' : 'contact-message'">
 								<span>{{message.text}}</span>
 								<span class="time">{{message.date}}</span>
