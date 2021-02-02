@@ -88,13 +88,24 @@ new Vue ({
 					}
 				]
 			}
-		]
+		],
+
+		currentChat: 0
 	},
 
 	methods: {
-		currentTime: function () {
-			let time = new Date();
-			return `${time.getHours()}:${time.getMinutes()}`;
+		selectChat: function (currentIndex) {
+			const mainBottomContainer = document.getElementById('mainBottomContainer');
+			const chatPlaceholder = document.getElementById('chatPlaceholder');
+			let contactChat = document.getElementsByClassName('contactChat');
+
+			contactChat[this.currentChat].classList.remove('bg-color-1');
+
+			this.currentChat = currentIndex;
+
+			chatPlaceholder.style.display = 'none';
+			mainBottomContainer.style.display = 'block';
+			contactChat[this.currentChat].classList.add('bg-color-1');
 		}
 	}
 });

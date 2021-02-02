@@ -57,10 +57,9 @@
 
 .time {
 	color: #848C93;
-	font-size: .7em;
-	position: absolute;
-	right: 10px;
-	bottom: 10px;
+	font-size: .6em;
+	align-self: flex-end;
+	padding-top: 10px;
 }
 /* end UTILITY CLASSES */
 
@@ -150,30 +149,40 @@
 	overflow-y: scroll;
 }
 
-#sidebar > .chats .contact-chat {
+#sidebar > .chats .contactChat {
 	padding: 5px 20px;
 }
 
-#sidebar > .chats .contact-chat:not(:last-child) {
+#sidebar > .chats .contactChat:not(:last-child) {
 	border-bottom: 2px solid #FAFAFA;
 }
 
-#sidebar > .chats .contact-chat:hover {
+#sidebar > .chats .contactChat:hover {
 	background-color: #EAEAEA;
 }
 
-#sidebar > .chats .contact-chat .contact-pic {
+#sidebar > .chats .contactChat .contact-pic {
 	width: 50px;
 	height: 55px;
 	margin-right: 20px;
 }
 
-#sidebar > .chats .contact-chat .contact-pic img {
+#sidebar > .chats .contactChat .contact-pic img {
 	height: 100%;
 	border-radius: 50%;
 }
 
-#main-bottom-container {
+#chatPlaceholder {
+	justify-content: center;
+	align-items: center;
+}
+
+#mainBottomContainer {
+	display: none;
+}
+
+#chatPlaceholder,
+#mainBottomContainer {
 	width: 65%;
 	height: 100%;
 }
@@ -251,18 +260,18 @@ content: '';
 #main > .messaging .my-message,
 #main > .messaging .contact-message {
 	width: 200px;
-	height: 50px;
 	border-radius: 15px;
 	padding: 10px;
 	margin-top: 30px;
 	position: relative;
+	display: flex;
+	flex-direction: column;
 }
 
 #box-bottom {
 	background-color: #F3EEEA;
 	height: 60px;
-	padding: 8
-	px 15px;
+	padding: 8px 15px;
 	justify-content: space-around;
 	align-items: center;
 	color: #717272;
