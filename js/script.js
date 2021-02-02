@@ -91,6 +91,7 @@ new Vue ({
 		],
 
 		currentChat: 0,
+		searchedContact: '',
 		newMsg: ''
 	},
 
@@ -100,7 +101,7 @@ new Vue ({
 			if (value < 10) {
 				value = '0' + value;
 			}
-			
+
 			return value;
 		},
 

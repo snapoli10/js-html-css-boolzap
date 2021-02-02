@@ -42,11 +42,11 @@
 						<div class="chat-search flex bg-white">
 							<i class="fas fa-search text-grey-1"></i>
 						</div>
-						<input type="text" class="chat-init" name="chat-start" placeholder="Cerca o inizia una nuova chat">
+						<input type="text" class="chat-init" name="chat-start" placeholder="Cerca o inizia una nuova chat" v-model="searchedContact">
 					</div>
 
 					<div class="chats bg-white">
-						<div class="contactChat pointer flex" v-for="(contact, index) in contacts" @click="selectChat(index)">
+						<div class="contactChat pointer flex" v-for="(contact, index) in contacts" v-if="contact.name.toLowerCase().includes(searchedContact.toLowerCase())" @click="selectChat(index)">
 							<div class="contact-pic bg-color-1">
 								<img :src="`img/avatar${contact.avatar}.jpg`" alt="immagine del profilo del tuo contatto">
 							</div>
