@@ -96,39 +96,21 @@ new Vue ({
 	},
 
 	methods: {
-		// Aggiungere 0 alle singole cifre dell'orario
-		fixTimeValue: function (value) {
-			if (value < 10) {
-				value = '0' + value;
-			}
-
-			return value;
-		},
-
-		// Ricavare l'ora corrente
-		currentTime: function () {
-			let time = new Date();
-			return `${this.fixTimeValue(time.getHours())}:${this.fixTimeValue(time.getMinutes())}`;
-		},
-
-		// Ultima attività
-		lastActive: function (currentIndex) {
-			const messageList = this.contacts[currentIndex].messages;
-			const lastActivity = messageList[messageList.length - 1].date;
-
-			if (lastActivity.length > 5) { // Se l'ultimo messaggio risale a una vecchia data
-				return lastActivity.slice(11, 16);
-			} else {
-				return lastActivity;
-			}
-		},
-
 		// Ultimo messaggio
 		lastMessage: function (currentIndex) {
 			const messageList = this.contacts[currentIndex].messages;
 
 			return messageList[messageList.length - 1].text;
 		},
+
+		// Data ultimo messaggio
+		lastMessageDate: function (currentIndex) {
+			const messageList = this.contacts[currentIndex].messages;
+			const lastActivity = messageList[messageList.length - 1].date;
+
+			return lastActivity.slice(11, 16);
+		},
+
 
 		// Ultimo accesso
 		lastSeen: function () {
@@ -164,7 +146,7 @@ new Vue ({
 			if (this.newMsg.trim().length !== 0) { // Se il messaggio non contiene solo spazi
 				messageList.push(
 					{
-						date: this.currentTime(),
+						date: dayjs().format('DD/MM/YYYY hh:mm:ss'),
 						text: this.newMsg,
 						status: 'sent'
 					}
@@ -191,12 +173,31 @@ new Vue ({
 				setTimeout(() => {
 					messageList.push(
 						{
-							date: this.currentTime(),
+							date: dayjs().format('DD/MM/YYYY hh:mm:ss'),
 							text: answer,
 							status: 'received'
 						});
 				}, 1000);
 			}
 		},
+
+		// Mostrare menu a tendina per cancellare messaggio
+		showMsgOptions: function (currentIndex) {
+			const messageOptions = document.getElementsByClassName('messageOptions');
+
+			for (let i = 0; i < messageOptions.length; i++) {
+				if (i === currentIndex) {
+					messageOptions[i].classList.toggle('show');
+				} else {
+					messageOptions[i].classList.remove('show');
+				}
+			}
+		},
+
+		deleteMessage: function (elementIndex) {
+			this.contacts[this.currentChat].messages = this.contacts[this.currentChat].messages.filter((element, index) => {
+				return index !== elementIndex;
+			});
+		}
 	}
 });

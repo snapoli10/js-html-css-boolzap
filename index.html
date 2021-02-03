@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+		<script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/dayjs.min.js"></script>
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
@@ -53,10 +54,10 @@
 								</div>
 								<div class="contact-description flex">
 									<h2 class="font-09em">{{contact.name}}</h2>
-									<span class="pad-top-10">{{lastMessage(index)}}</span>
+									<span class="last-message"><em>{{lastMessage(index)}}</em></span>
 								</div>
 							</div>
-							<span class="font-06em text-grey-2">{{lastActive(index)}}</span>
+							<span class="font-06em text-grey-2">{{lastMessageDate(index)}}</span>
 						</div>
 					</div>
 				</div>
@@ -65,7 +66,7 @@
 					<h2>Seleziona una chat</h2>
 				</div>
 
-				<div id="mainBottomContainer">
+				<div id="mainBottomContainer" class="hide">
 					<div id="main">
 						<div class="main-top bg-color-1 flex">
 							<div class="user-account flex">
@@ -85,17 +86,26 @@
 						</div>
 
 						<div class="messaging flex">
-							<div v-for="message in contacts[currentChat].messages" class="flex" :class="
-							(message.status === 'sent') ? 'my-message' : 'contact-message'">
+							<div v-for="(message, index) in contacts[currentChat].messages" class="flex" :class="
+							(message.status === 'sent') ? 'my-message' : 'contact-message'" @click="showMsgOptions(index)">
 								<span>{{message.text}}</span>
-								<span class="time font-06em text-grey-2 pad-top-10">{{message.date}}</span>
+								<div class="message-other flex">
+									<div class="messageOptions hide pointer">
+										<i class="fas fa-chevron-down font-09em text-grey-2"></i>
+										<ul class="bg-white">
+											<li>Message Info</li>
+											<li @click="deleteMessage(index)">Delete Message</li>
+										</ul>
+									</div>
+									<span class="time font-06em text-grey-2">{{message.date.slice(11, 16)}}</span>
+								</div>
 							</div>
 						</div>
 					</div>
 
 					<div id="box-bottom" class="flex">
 						<i class="far fa-smile pointer"></i>
-						<input type="text" class="type-msg" name="type-message" placeholder="Scrivi un messaggio" v-model="newMsg" @keyup.enter="newMessage()">
+						<input type="text" class="type-msg" name="type-message" placeholder="Scrivi un messaggio" v-model="newMsg" @keyup.enter="newMessage">
 						<i class="fas fa-microphone pointer"></i>
 					</div>
 				</div>
