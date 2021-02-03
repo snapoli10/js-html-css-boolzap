@@ -310,6 +310,7 @@
 	align-items: center;
 	color: #717272;
 	font-size: 22px;
+	position: relative;
 }
 
 #box-bottom > .type-msg {
@@ -321,4 +322,18 @@
 
 #box-bottom > .type-msg::placeholder {
 	padding-left: 15px;
+}
+
+#box-bottom > .msg-send {
+	position: absolute;
+	right: 90px;
+	border: 1px solid black;
+	width: 32px;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	padding-right: 3px;
+	border-radius: 50%;
+	background-color: lightgreen;
+	color: white;
 }
