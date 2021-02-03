@@ -100,17 +100,23 @@ new Vue ({
 		lastMessage: function (currentIndex) {
 			const messageList = this.contacts[currentIndex].messages;
 
-			return messageList[messageList.length - 1].text;
+			if (messageList.length === 0) {
+				return '';
+			} else {
+				return messageList[messageList.length - 1].text;
+			}
 		},
 
 		// Data ultimo messaggio
 		lastMessageDate: function (currentIndex) {
 			const messageList = this.contacts[currentIndex].messages;
-			const lastActivity = messageList[messageList.length - 1].date;
 
-			return lastActivity.slice(11, 16);
+			if (messageList.length === 0) {
+				return '';
+			} else {
+				return messageList[messageList.length - 1].date.slice(11, 16);
+			}
 		},
-
 
 		// Ultimo accesso
 		lastSeen: function () {
@@ -119,7 +125,11 @@ new Vue ({
 				return element.status === 'received';
 			});
 
-			return receivedMessages[receivedMessages.length - 1].date;
+			if (receivedMessages.length === 0) {
+				return '???';
+			} else {
+				return receivedMessages[receivedMessages.length - 1].date;
+			}
 		},
 
 		// Selezionare una chat
@@ -146,7 +156,7 @@ new Vue ({
 			if (this.newMsg.trim().length !== 0) { // Se il messaggio non contiene solo spazi
 				messageList.push(
 					{
-						date: dayjs().format('DD/MM/YYYY hh:mm:ss'),
+						date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
 						text: this.newMsg,
 						status: 'sent'
 					}
@@ -173,7 +183,7 @@ new Vue ({
 				setTimeout(() => {
 					messageList.push(
 						{
-							date: dayjs().format('DD/MM/YYYY hh:mm:ss'),
+							date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
 							text: answer,
 							status: 'received'
 						});
