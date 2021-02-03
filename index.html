@@ -73,13 +73,14 @@
 								<div class="profile-pic">
 									<img :src="`img/avatar${contacts[currentChat].avatar}.jpg`" alt="il profilo con cui chatti" />
 								</div>
-								<div class="">
+								<div>
 									<h2 class="username font-09em">{{contacts[currentChat].name}}</h2>
 									<span class="last-seen font-08em">Ultimo accesso: {{lastSeen()}}</span>
 								</div>
 							</div>
 							<div class="font-20 text-grey-1">
-								<i class="fas fa-search pad-rig-15 pointer"></i>
+								<input type="text" name="msgSearchbar" class="msgSearchbar hide" placeholder="Scrivi qualcosa per cercare" v-model="searchedMsg">
+								<i class="fas fa-search pad-rig-15 pointer" @click="openSearch"></i>
 								<i class="fas fa-paperclip pad-rig-15 pointer"></i>
 								<i class="fas fa-ellipsis-v pointer"></i>
 							</div>
@@ -87,7 +88,7 @@
 
 						<div class="messaging flex">
 							<div v-for="(message, index) in contacts[currentChat].messages" class="flex" :class="
-							(message.status === 'sent') ? 'my-message' : 'contact-message'" @click="showMsgOptions(index)">
+							(message.status === 'sent') ? 'my-message' : 'contact-message'" v-if="message.text.toLowerCase().includes(searchedMsg.toLowerCase())" @click="showMsgOptions(index)">
 								<span>{{message.text}}</span>
 								<div class="message-other flex">
 									<div class="messageOptions hide pointer">

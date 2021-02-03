@@ -92,6 +92,7 @@ new Vue ({
 
 		currentChat: 0,
 		searchedContact: '',
+		searchedMsg: '',
 		newMsg: ''
 	},
 
@@ -208,6 +209,12 @@ new Vue ({
 			this.contacts[this.currentChat].messages = this.contacts[this.currentChat].messages.filter((element, index) => {
 				return index !== elementIndex;
 			});
+		},
+
+		openSearch: function () {
+			const msgSearchbar = document.getElementsByClassName('msgSearchbar')[0];
+
+			msgSearchbar.classList.toggle('hide');
 		}
 	}
 });
