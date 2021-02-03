@@ -96,7 +96,7 @@ new Vue ({
 	},
 
 	methods: {
-		// Ricavare l'ora corrente
+		// Aggiungere 0 alle singole cifre dell'orario
 		fixTimeValue: function (value) {
 			if (value < 10) {
 				value = '0' + value;
@@ -105,9 +105,29 @@ new Vue ({
 			return value;
 		},
 
+		// Ricavare l'ora corrente
 		currentTime: function () {
 			let time = new Date();
 			return `${this.fixTimeValue(time.getHours())}:${this.fixTimeValue(time.getMinutes())}`;
+		},
+
+		// Ultima attività
+		lastActive: function (currentIndex) {
+			const messageList = this.contacts[currentIndex].messages;
+			const lastActivity = messageList[messageList.length - 1].date;
+
+			if (lastActivity.length > 5) { // Se l'ultimo messaggio risale a una vecchia data
+				return lastActivity.slice(11, 16);
+			} else {
+				return lastActivity;
+			}
+		},
+
+		// Ultimo messaggio
+		lastMessage: function (currentIndex) {
+			const messageList = this.contacts[currentIndex].messages;
+
+			return messageList[messageList.length - 1].text;
 		},
 
 		// Ultimo accesso

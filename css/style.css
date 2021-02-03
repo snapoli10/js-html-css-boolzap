@@ -25,8 +25,16 @@
 	background-color: #EAEAEA;
 }
 
+.pad-top-10 {
+	padding-top: 10px;
+}
+
 .pad-rig-15 {
 	padding-right: 15px;
+}
+
+.font-06em {
+	font-size: .6em;
 }
 
 .font-08em {
@@ -56,10 +64,7 @@
 }
 
 .time {
-	color: #848C93;
-	font-size: .6em;
 	align-self: flex-end;
-	padding-top: 10px;
 }
 /* end UTILITY CLASSES */
 
@@ -151,6 +156,7 @@
 
 #sidebar > .chats .contactChat {
 	padding: 5px 20px;
+	justify-content: space-between;
 }
 
 #sidebar > .chats .contactChat:not(:last-child) {
@@ -170,6 +176,10 @@
 #sidebar > .chats .contactChat .contact-pic img {
 	height: 100%;
 	border-radius: 50%;
+}
+
+#sidebar > .chats .contactChat .contact-description {
+	flex-direction: column;
 }
 
 #chatPlaceholder {

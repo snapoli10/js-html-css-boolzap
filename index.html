@@ -46,11 +46,17 @@
 					</div>
 
 					<div class="chats bg-white">
-						<div class="contactChat pointer flex" v-for="(contact, index) in contacts" v-if="contact.name.toLowerCase().includes(searchedContact.toLowerCase())" @click="selectChat(index)">
-							<div class="contact-pic bg-color-1">
-								<img :src="`img/avatar${contact.avatar}.jpg`" alt="immagine del profilo del tuo contatto">
+						<div class="contactChat pointer flex" v-for="(contact, index) in contacts" v-if="contact.name.toLowerCase().startsWith(searchedContact.toLowerCase())" @click="selectChat(index)">
+							<div class="flex">
+								<div class="contact-pic bg-color-1">
+									<img :src="`img/avatar${contact.avatar}.jpg`" alt="immagine del profilo del tuo contatto">
+								</div>
+								<div class="contact-description flex">
+									<h2 class="font-09em">{{contact.name}}</h2>
+									<span class="pad-top-10">{{lastMessage(index)}}</span>
+								</div>
 							</div>
-							<h2 class="font-09em">{{contact.name}}</h2>
+							<span class="font-06em text-grey-2">{{lastActive(index)}}</span>
 						</div>
 					</div>
 				</div>
@@ -82,7 +88,7 @@
 							<div v-for="message in contacts[currentChat].messages" class="flex" :class="
 							(message.status === 'sent') ? 'my-message' : 'contact-message'">
 								<span>{{message.text}}</span>
-								<span class="time">{{message.date}}</span>
+								<span class="time font-06em text-grey-2 pad-top-10">{{message.date}}</span>
 							</div>
 						</div>
 					</div>
